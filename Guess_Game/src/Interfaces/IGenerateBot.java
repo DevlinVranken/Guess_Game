@@ -5,5 +5,5 @@ public interface IGenerateBot {
 
     void play();
 
-    boolean checkAnswer(String answer);
+    void setTries(int tries);
 }

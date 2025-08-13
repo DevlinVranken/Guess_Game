@@ -14,9 +14,9 @@ public class Main {
             System.out.println("Press 1 to guess a number or 2 to guess a word!");
             mode = Integer.parseInt(input.nextLine()); // Used this method to prevent extra nextLine calls
             if (mode == 1) {
-                game = new GuessGame(new NumberGenerateBot(input));
+                game = new GuessGame(new NumberGenerateBot(input), input);
             } else if (mode == 2) {
-                game = new GuessGame(new WordGenerateBot(input));
+                game = new GuessGame(new WordGenerateBot(input), input);
             } else {
                 System.out.println("Not a valid mode!");
             }

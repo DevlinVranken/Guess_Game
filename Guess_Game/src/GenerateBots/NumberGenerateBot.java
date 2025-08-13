@@ -8,9 +8,15 @@ import java.util.Scanner;
 public class NumberGenerateBot implements IGenerateBot {
     int content;
     Scanner sc;
+    private int tries;
 
     public NumberGenerateBot(Scanner sc) {
         this.sc = sc;
+    }
+
+    @Override
+    public void setTries(int tries) {
+        this.tries = tries;
     }
 
     @Override
@@ -18,9 +24,6 @@ public class NumberGenerateBot implements IGenerateBot {
         System.out.println("What is maximum number I may choose?");
         int max = Integer.parseInt(sc.nextLine()); // Used this method to prevent extra nextLine calls
         this.content = new Random().nextInt(max);
-        System.out.println("What is the number of tries you would like to guess?");
-        int tries = Integer.parseInt(sc.nextLine()); // Used this method to prevent extra nextLine calls
-        System.out.println("Good luck!");
         int currentTry = 1;
         boolean guessed = false;
         while (currentTry <= tries && !guessed) {
@@ -35,8 +38,7 @@ public class NumberGenerateBot implements IGenerateBot {
         sc.close();
     }
 
-    @Override
-    public boolean checkAnswer(String answer) {
+    private boolean checkAnswer(String answer) {
         int intAnswer = Integer.parseInt(answer); // In this case, make it an int
         if (intAnswer < content) {
             System.out.println("My number is larger!");
